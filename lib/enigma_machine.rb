@@ -35,7 +35,6 @@ class EnigmaMachine
 	end
 
 private
-	# pretty sure there's a nicer way to do this
 	def shift_rotors!
 		if @right_rotor.shift?
 			@middle_rotor.shift_up!
