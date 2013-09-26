@@ -27,7 +27,7 @@ class EnigmaMachine
   end
 
   def convert_sentence(input)
-    input.split(' ').map { |word| convert_word(word) }.join(' ')
+    input.split.map { |word| convert_word(word) }.join(' ')
   end
 
   def reset!
