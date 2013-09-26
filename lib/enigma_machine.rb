@@ -5,7 +5,6 @@ class EnigmaMachine
   LAMPBOARD = ('A'..'Z').to_a
 
   def initialize
-    @reflector = Reflector.new
     @left_rotor = Rotor.new("EKMFLGDQVZNTOWYHXUSPAIBRCJ", 12, 'Q')
     @middle_rotor = Rotor.new("AJDKSIRUXBLHWTMCQGZNPYFVOE", 2, 'E')
     @right_rotor = Rotor.new("BDFHJLCPRTXVZNYEIWGAKMUSQO", 10, 'V')
@@ -16,7 +15,7 @@ class EnigmaMachine
     index = LAMPBOARD.index(character.upcase)
     @right_rotor.shift_up! # right rotor gets shifted up before each letter is encoded/decoded
     @rotors.each { |rotor| index = rotor.convert(index, :left ) } # pass the character through the rotors from right to left
-    index = @reflector.reflect(index)  # reflect
+    index = Reflector.reflect(index)  # reflect
     @rotors.reverse.each { |rotor| index = rotor.convert(index, :right )} # pass the character from left to right
     shift_rotors!
     LAMPBOARD[index]
