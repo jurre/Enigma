@@ -2,7 +2,7 @@ require_relative 'reflector'
 require_relative 'rotor'
 
 class EnigmaMachine
-  INPUT_OUTPUT = ('A'..'Z').to_a
+  LAMPBOARD = ('A'..'Z').to_a
 
   def initialize
     @reflector = Reflector.new
@@ -13,13 +13,13 @@ class EnigmaMachine
   end
 
   def convert_character(character)
-    index = INPUT_OUTPUT.index(character.upcase)
+    index = LAMPBOARD.index(character.upcase)
     @right_rotor.shift_up! # right rotor gets shifted up before each letter is encoded/decoded
     @rotors.each { |rotor| index = rotor.convert(index, :left ) } # pass the character through the rotors from right to left
     index = @reflector.reflect(index)  # reflect
     @rotors.reverse.each { |rotor| index = rotor.convert(index, :right )} # pass the character from left to right
     shift_rotors!
-    INPUT_OUTPUT[index]
+    LAMPBOARD[index]
   end
 
   def convert_word(input)
