@@ -31,7 +31,7 @@ class EnigmaMachine
   end
 
   def reset!
-    @rotors.each { |r| r.reset! }
+    @rotors.each { |rotor| rotor.reset! }
   end
 
 private
