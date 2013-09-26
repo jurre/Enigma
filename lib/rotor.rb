@@ -20,12 +20,12 @@ class Rotor
   end
 
   def right
-    right = @rotor_values.map { |r| r[1] }
+    right = @rotor_values.map { |rotor_value| r[1] }
     right.slice(@position, 26)
   end
 
   def left
-    left = @rotor_values.map { |r| r[0] }
+    left = @rotor_values.map { |rotor_value| r[0] }
     left.slice(@position, 26)
   end
 

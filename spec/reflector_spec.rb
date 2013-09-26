@@ -10,5 +10,4 @@ describe Reflector do
     Reflector.reflect(10).must_equal 13
     Reflector.reflect(18).must_equal 5
   end
-
 end
